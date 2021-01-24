@@ -1,24 +1,19 @@
+# FastBus
 
+Fast bus is a web application for managing reservations and online sales of seats on buses .
 
-## Description
-
-simple employee management system 
-
-## Demo
-https://simple-employee-man.herokuapp.com/list
-
+## Informations:
+- Status: under development
+- Lastest version 1.0
+- Sector: transport
+- Created: October 2020
+- Last updated: October 2020
   
-## Screenshots
-<p align="center">
-
-![enter image description here](employee-management.JPG)
-
-</p>
-
-## Source code
-https://github.com/aniskchaou/EMPLOYEE-MANAGEMENT-NODEJS 
-  
-
-## Technologies
-
-Node Js, Express, Node-postgres, Express-handlebars
+## Features:
+- Manage reservations
+- Manage inventory and programming operations
+- Manage staff
+- Manage buses and shuttles
+- Manage traveler reservations
+- Manage dynamic routing of buses and assign the routes of each
+- Manage the sales and ticketing department
