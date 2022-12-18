@@ -20,7 +20,9 @@ routerr.get('/', indexController.getHome)
 routerr.get('/destination', indexController.getDestination)
 routerr.get('/pricing', indexController.getPricing)
 routerr.get('/contact', indexController.getContact)
-
+routerr.post('/search', indexController.getSearch)
+routerr.get('/booking', indexController.getBooking)
+routerr.post('/booking', indexController.postBooking)
 
 
 module.exports = routerr;
