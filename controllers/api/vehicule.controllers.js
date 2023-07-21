@@ -1,4 +1,4 @@
-const { findNoteById, updateNote, deleteNoteById, deleteAllNotes, findAllNotes, createNote } = require("../../services/note.services");
+const { findVehiculeById, updateVehicule, deleteVehiculeById, deleteAllVehicules, findAllVehicules, createVehicule } = require("../../services/vehicule.services");
 
 
 
@@ -12,33 +12,39 @@ exports.create = (req, res) => {
     }
     // Create a user
     const patient = {
-        name: req.body.name,
-        description: req.body.description
+        registration: req.body.registration,
+        year: req.body.year,
+        engine: req.body.engine,
+        type: req.body.type,
+        model: req.body.model,
+        chassis: req.body.chassis,
+        owner: req.body.owner,
+        brand: req.body.brand,
     }
 
-    createNote(patient, res)
+    createVehicule(patient, res)
 };
 
 exports.findAll = (req, res) => {
 
-    findAllNotes(res)
+    findAllVehicules(res)
 };
 
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    findNoteById(id, res)
+    findVehiculeById(id, res)
 };
 
 exports.update = (req, res) => {
     const id = req.params.id;
-    updateNote(id, req, res)
+    updateVehicule(id, req, res)
 };
 
 exports.delete = (req, res) => {
     const id = req.params.id;
-    deleteNoteById(id, res)
+    deleteVehiculeById(id, res)
 };
 
 exports.deleteAll = (req, res) => {
-    deleteAllNotes(req, res)
+    deleteAllVehicules(req, res)
 };

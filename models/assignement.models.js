@@ -4,10 +4,9 @@ var Sequelize = require('sequelize');
 
 var Assignement = sequelize.define('assignement', {
     travel: Sequelize.STRING,
-    resgistration: Sequelize.STRING,
+    vehicule: Sequelize.STRING,
     date: Sequelize.STRING,
-    driver: Sequelize.STRING,
-    status: Sequelize.STRING
+    driver: Sequelize.STRING
 });
 
 

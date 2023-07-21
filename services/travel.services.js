@@ -1,8 +1,8 @@
-const Note = require("../models/note.models");
+const Travel = require("../models/travel.models");
 
-exports.findAllNotes = (res) => {
+exports.findAllTravels = (res) => {
 
-    Note.findAll({})
+    Travel.findAll({})
         .then(data => {
             res.send(data);
         })
@@ -14,82 +14,82 @@ exports.findAllNotes = (res) => {
         });
 }
 
-exports.createNote = (income, res) => {
-    Note.create(income)
+exports.createTravel = (income, res) => {
+    Travel.create(income)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Note."
+                    err.message || "Some error occurred while creating the Travel."
             });
         });
 }
 
-exports.findNoteById = (id) => {
-    Note.findByPk(id)
+exports.findTravelById = (id) => {
+    Travel.findByPk(id)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Note with id=" + id
+                message: "Error retrieving Travel with id=" + id
             });
         });
 }
 
-exports.deleteNoteById = (id, res) => {
-    Note.destroy({
+exports.deleteTravelById = (id, res) => {
+    Travel.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Note was deleted successfully!"
+                    message: "Travel was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Note with id=${id}. Maybe Note was not found!`
+                    message: `Cannot delete Travel with id=${id}. Maybe Travel was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Note with id=" + id
+                message: "Could not delete Travel with id=" + id
             });
         });
 }
 
-exports.updateNote = (id, req, res) => {
-    Note.update(req.body, {
+exports.updateTravel = (id, req, res) => {
+    Travel.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Note was updated successfully."
+                    message: "Travel was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Note with id=${id}. Maybe Note was not found or req.body is empty!`
+                    message: `Cannot update Travel with id=${id}. Maybe Travel was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Note with id=" + id
+                message: "Error updating Travel with id=" + id
             });
         });
 }
 
-exports.deleteAllNotes = () => {
-    Note.destroy({
+exports.deleteAllTravels = () => {
+    Travel.destroy({
         where: {},
         truncate: false
     })
         .then(nums => {
-            res.send({ message: `${nums} Note were deleted successfully!` });
+            res.send({ message: `${nums} Travel were deleted successfully!` });
         })
         .catch(err => {
             res.status(500).send({

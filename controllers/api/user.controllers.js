@@ -131,3 +131,35 @@ exports.deleteAll = (req, res) => {
             });
         });
 };
+
+exports.login = (req, res) => {
+
+    if (!req.body) {
+        res.status(400).send({
+            message: "Content can not be empty!"
+        });
+        return;
+    }
+    const user = {
+        username: req.body.username,
+        password: req.body.password,
+
+    }
+
+    User.findOne({ where: { username: user.username, password: user.password } })
+        .then(data => {
+
+            if (data === null) {
+                res.send({});
+            } else {
+                res.send(data);
+            }
+
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while creating the User."
+            });
+        });
+};

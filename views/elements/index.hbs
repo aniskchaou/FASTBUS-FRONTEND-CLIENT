@@ -9,14 +9,13 @@
 
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="/"><img src="images/fastbus.png" /></a></div>
+					<div id="gtco-logo"><a href="/"><img src="images/fastbus.png"  /></a></div>
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="/destination">Destination</a></li>
-						<li><a href="/pricing">Pricing</a></li>
+						<li><a href="/">Home</a></li>
+						<li><a href="/destination">Destinations</a></li>
 						<li><a href="/contact">Contact</a></li>
-						<li><a target="_blank" href="https://fast-bus.herokuapp.com/">Administration</a></li>
 					</ul>
 				</div>
 			</div>
@@ -34,7 +33,7 @@
 
 					<div class="row row-mt-15em">
 						<div class="col-md-7 mt-text  " data-animate-effect="fadeInUp">
-							<h1>Planing Trip To Anywhere in The World?</h1>
+							<h1>{{homePage.mainTitle}}</h1>
 						</div>
 						<div class="col-md-4 col-md-push-1  " data-animate-effect="fadeInRight">
 							<div class="form-wrap">
@@ -42,25 +41,34 @@
 
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
-											<h3>Book Your Trip</h3>
+											<h3>{{homePage.searBarTitle}}</h3>
 											<form id="myForm" action="/search" method="POST">
 												
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="activities">From</label>
+														<label for="activities"> {{homePage.from}}</label>
 														<select name="from" id="activities" class="form-control">
-															<option value="aa">Activities</option>
-															<option value="aa">Hiking</option>
+                                                            
+															{{#each cities}}
+															<option>Select</option>
+															<option value="{{name}}">{{name}}</option>
+															{{/each}}
+															
+
 
 														</select>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="destination">To</label>
+														<label for="destination"> {{homePage.to}}</label>
 														<select name="to" id="destination" class="form-control">
-															<option value="aa">Philippines</option>
-															<option value="aa">USA</option>
+
+															{{#each cities}}
+															<option>Select</option>
+															<option value="{{name}}">{{name}}</option>
+															{{/each}}
+
 
 														</select>
 													</div>
@@ -68,14 +76,14 @@
 
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="date-start">Date</label>
+														<label for="date-start"> {{homePage.date}}</label>
 														<input name="date" type="text" id="date-start" class="form-control">
 													</div>
 												</div>
 
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="date-start">Persons</label>
+														<label for="date-start"> {{homePage.persons}}</label>
 														<input name="persons" type="number" id="date-start" class="form-control">
 													</div>
 												</div>
@@ -83,7 +91,7 @@
 												<div class="row form-group">
 													<div class="col-md-12">
 														<input id="send-btn" type="submit" class="btn btn-primary btn-block"
-															value="Submit">
+															value="Search">
 													</div>
 												</div>
 											</form>
@@ -112,113 +120,33 @@
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2>Most Popular Destination</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident.
-						Odit ab aliquam dolor eius.</p>
+					<h2>{{homePage.destinationSection}}</h2>
+					<p>{{homePage.descriptionDestination}} </p>
 				</div>
 			</div>
 			<div class="row">
-
+			{{#each cities}}
 				<div class="col-lg-4 col-md-4 col-sm-6">
 					<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
 						<figure>
 							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_1.jpg" alt="Image" class="img-responsive">
+							<img src="https://picsum.photos/400/400" alt="Image" class="img-responsive">
 						</figure>
 						<div class="fh5co-text">
-							<h2>New York, USA</h2>
+							<h2>{{name}}</h2>
 							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
 							<p><span class="btn btn-primary">Schedule a Trip</span></p>
 						</div>
 					</a>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_2.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_2.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Seoul, South Korea</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_3.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_3.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Paris, France</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
-						</div>
-					</a>
-				</div>
-
-
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_4.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_4.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Sydney, Australia</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
-						</div>
-					</a>
-				</div>
-
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_5.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_5.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Greece, Europe</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
-						</div>
-					</a>
-				</div>
-
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_6.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_6.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Spain, Europe</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
-						</div>
-					</a>
-				</div>
+				{{/each}}
+				
 
 			</div>
 		</div>
 	</div>
 
 
-
-	<div class="gtco-cover gtco-cover-sm" style="background-image: url(images/img_bg_1.jpg)"
-		data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="gtco-container text-center">
-			<div class="display-t">
-				<div class="display-tc">
-					<h1>We have high quality services that you will surely love!</h1>
-				</div>
-			</div>
-		</div>
-	</div>
 
 
 
@@ -228,8 +156,8 @@
 		<div class="gtco-container">
 			<div class="row  ">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2>Subscribe</h2>
-					<p>Be the first to know about the new templates.</p>
+					<h2>{{homePage.subdcribeSection}}</h2>
+					<p>{{homePage.descriptionSubscribe}}</p>
 				</div>
 			</div>
 			<div class="row  ">
@@ -256,16 +184,14 @@
 
 				<div class="col-md-4">
 					<div class="gtco-widget">
-						<h3>About Us</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eos molestias quod sint
-							ipsum possimus temporibus officia iste perspiciatis consectetur in fugiat repudiandae cum.
-							Totam cupiditate nostrum ut neque ab?</p>
+						<h3> {{contactPage.title1Footer}}</h3>
+						<p>{{systemSettings.description}}</p>
 					</div>
 				</div>
 
 				<div class="col-md-2 col-md-push-1">
 					<div class="gtco-widget">
-						<h3>Destination</h3>
+						<h3> {{contactPage.title2Footer}}</h3>
 						<ul class="gtco-footer-links">
 							<li><a href="#">Europe</a></li>
 							<li><a href="#">Australia</a></li>
@@ -278,7 +204,7 @@
 
 				<div class="col-md-2 col-md-push-1">
 					<div class="gtco-widget">
-						<h3>Hotels</h3>
+						<h3> {{contactPage.title3Footer}}</h3>
 						<ul class="gtco-footer-links">
 							<li><a href="#">Luxe Hotel</a></li>
 							<li><a href="#">Italy 5 Star hotel</a></li>
@@ -291,10 +217,10 @@
 
 				<div class="col-md-3 col-md-push-1">
 					<div class="gtco-widget">
-						<h3>Get In Touch</h3>
+						<h3>{{contactPage.title4Footer}}</h3>
 						<ul class="gtco-quick-contact">
-							<li><a href="#"><i class="icon-phone"></i> +1 234 567 890</a></li>
-							<li><a href="#"><i class="icon-mail2"></i> info@freehtml5.co</a></li>
+							<li><a href="#"><i class="icon-phone"></i> {{systemSettings.telephone}}</a></li>
+							<li><a href="#"><i class="icon-mail2"></i> {{systemSettings.email}}</a></li>
 							<li><a href="#"><i class="icon-chat"></i> Live Chat</a></li>
 						</ul>
 					</div>

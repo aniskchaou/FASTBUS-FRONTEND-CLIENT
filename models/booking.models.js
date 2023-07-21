@@ -5,9 +5,10 @@ var Sequelize = require('sequelize');
 var Booking = sequelize.define('booking', {
     date: Sequelize.STRING,
     passenger: Sequelize.STRING,
-    route: Sequelize.STRING,
-    price: Sequelize.STRING,
-    status: Sequelize.STRING,
+    trip: Sequelize.STRING,
+    payment: Sequelize.STRING,
+    adults: Sequelize.STRING,
+    kids: Sequelize.STRING
 });
 
 

@@ -1,4 +1,4 @@
-const { findNoteById, updateNote, deleteNoteById, deleteAllNotes, findAllNotes, createNote } = require("../../services/note.services");
+const { findDriverById, updateDriver, deleteDriverById, deleteAllDrivers, findAllDrivers, createDriver } = require("../../services/driver.services");
 
 
 
@@ -13,32 +13,32 @@ exports.create = (req, res) => {
     // Create a user
     const patient = {
         name: req.body.name,
-        description: req.body.description
+        license: req.body.license
     }
 
-    createNote(patient, res)
+    createDriver(patient, res)
 };
 
 exports.findAll = (req, res) => {
 
-    findAllNotes(res)
+    findAllDrivers(res)
 };
 
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    findNoteById(id, res)
+    findDriverById(id, res)
 };
 
 exports.update = (req, res) => {
     const id = req.params.id;
-    updateNote(id, req, res)
+    updateDriver(id, req, res)
 };
 
 exports.delete = (req, res) => {
     const id = req.params.id;
-    deleteNoteById(id, res)
+    deleteDriverById(id, res)
 };
 
 exports.deleteAll = (req, res) => {
-    deleteAllNotes(req, res)
+    deleteAllDrivers(req, res)
 };

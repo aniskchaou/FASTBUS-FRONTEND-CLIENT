@@ -13,10 +13,9 @@
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="/destination">Destination</a></li>
-						<li><a href="/pricing">Pricing</a></li>
+						<li><a href="/">Home</a></li>
+						<li><a href="/destination">Destinations</a></li>
 						<li><a href="/contact">Contact</a></li>
-						<li><a target="_blank" href="https://fast-bus.herokuapp.com/">Administration</a></li>
 					</ul>
 				</div>
 			</div>
@@ -43,50 +42,64 @@
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
 											<h3>Book Your Trip</h3>
-											<form action="#">
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="fullname">Your Name</label>
-														<input type="text" id="fullname" class="form-control">
-													</div>
+										<form id="myForm" action="/search" method="POST">
+										
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="activities"> From</label>
+													<select name="from" id="activities" class="form-control">
+										
+														{{#each cities}}
+										                <option>Select</option>
+														<option value="{{name}}">{{name}}</option>
+														{{/each}}
+										
+										
+										
+													</select>
 												</div>
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="activities">Activities</label>
-														<select name="#" id="activities" class="form-control">
-															<option value="">Activities</option>
-															<option value="">Hiking</option>
-															<option value="">Caving</option>
-															<option value="">Swimming</option>
-														</select>
-													</div>
+											</div>
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="destination">To</label>
+													<select name="to" id="destination" class="form-control">
+										
+														{{#each cities}}
+														<option>Select</option>
+														<option value="{{name}}">{{name}}</option>
+														{{/each}}
+										
+										
+													</select>
 												</div>
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="destination">Destination</label>
-														<select name="#" id="destination" class="form-control">
-															<option value="">Philippines</option>
-															<option value="">USA</option>
-															<option value="">Australia</option>
-															<option value="">Singapore</option>
-														</select>
-													</div>
+											</div>
+										
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="date-start">Date</label>
+													<input name="date" type="text" id="date-start" class="form-control">
 												</div>
-
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="date-start">Date Travel</label>
-														<input type="text" id="date-start" class="form-control">
-													</div>
+											</div>
+										
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="date-start"> Persons</label>
+													<input name="persons" type="number" id="date-start" class="form-control">
 												</div>
-
-												<div class="row form-group">
-													<div class="col-md-12">
-														<input type="submit" class="btn btn-primary btn-block"
-															value="Submit">
-													</div>
+											</div>
+										
+											<div class="row form-group">
+												<div class="col-md-12">
+													<input id="send-btn" type="submit" class="btn btn-primary btn-block" value="Search">
 												</div>
-											</form>
+											</div>
+										</form>
+										<script>
+											var form = document.getElementById("myForm");
+											document.getElementById("send-btn").addEventListener("click", function () {
+												form.submit();
+											})
+										</script>
 										</div>
 
 
@@ -102,7 +115,7 @@
 		</div>
 	</header>
 
-	<div class="gtco-section">
+	<div class="gtco-section" id="gtco-section">
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
@@ -112,25 +125,35 @@
 				</div>
 			</div>
 			<div class="row">
+				{{#each routess}}
+				{{#if id}}
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<div  class="fh5co-card-item">
 			
 					<div class="fh5co-text">
 						<div class="row">
-							<div style="color:gray;" class="col-lg-4 col-md-4 col-sm-4">Paris-Lyon</div>
-							<div class="col-lg-4 col-md-4 col-sm-4">
-								<h2>
-									<hr width="65">0.99$
+							<div style="color:gray;" class="col-lg-12 col-md-12 col-sm-12"><div class="row">
+							<div class="col-md-6"><h2>[{{name}}] {{from}} - {{to}}</h2></div>
+							<div class="col-md-6"><h2>{{start}} - {{end}}</h2></div>
+							</div></div>
+							<div class="col-lg-12 col-md-12 col-sm-12">
 									<hr width="65">
-								</h2>
+									<div class="row">
+										<div class="col-md-3"><i class="fa fa-users" aria-hidden="true"></i> {{SpacialSeat}} Adults</div>
+										<div class="col-md-3"><i class="fa fa-child" aria-hidden="true"></i> {{childSeat}} Children</div>
+										<div class="col-md-3"><i class="fa fa-clock" aria-hidden="true"></i> {{approximateTime}} minutes</div>
+										<div class="col-md-3"><i class="fa fa-bus" aria-hidden="true"></i> {{distance}} Km</div>
+									</div>
+									<hr width="65"> 
 							</div>
-							<div style="color:gray;" class="col-lg-4 col-md-4 col-sm-4">11h30-12h44</div>
 						</div>
 			
-						<a href="/booking" class="btn btn-primary">Book now</a>
+						<a href="/booking/{{name}}/1/1" class="btn btn-primary">Book now</a>
 					</div>
 				</div>
 			</div>
+			{{/if}}
+			{{/each}}
 				
 			
 
@@ -140,7 +163,14 @@
 
 
 
-	
+	<script type="text/javascript">
+		var divFirst = document.getElementById("gtco-section");
+		console.log(divFirst)
+		divFirst.style.visibility = 'visible';
+		divFirst.style.display = 'block';
+		divFirst.tabIndex = "-1";
+		divFirst.focus();
+	</script>
 
 
 

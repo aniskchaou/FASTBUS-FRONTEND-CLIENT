@@ -8,7 +8,8 @@ var Offer = sequelize.define('offer', {
     end: Sequelize.STRING,
     code: Sequelize.STRING,
     discount: Sequelize.STRING,
-    route: Sequelize.STRING,
+    travel: Sequelize.STRING,
+    condition: Sequelize.STRING,
 });
 
 

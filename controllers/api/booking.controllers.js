@@ -1,4 +1,4 @@
-const { findNoteById, updateNote, deleteNoteById, deleteAllNotes, findAllNotes, createNote } = require("../../services/booking.services");
+const { findBookingById, updateBooking, deleteBookingById, deleteAllBookings, findAllBookings, createBooking } = require("../../services/booking.services");
 
 
 
@@ -12,33 +12,37 @@ exports.create = (req, res) => {
     }
     // Create a user
     const patient = {
-        name: req.body.name,
-        description: req.body.description
+        date: req.body.date,
+        passenger: req.body.passenger,
+        trip: req.body.trip,
+        payment: req.body.payment,
+        adults: req.body.adults,
+        kids: req.body.kids
     }
 
-    createNote(patient, res)
+    createBooking(patient, res)
 };
 
 exports.findAll = (req, res) => {
 
-    findAllNotes(res)
+    findAllBookings(res)
 };
 
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    findNoteById(id, res)
+    findBookingById(id, res)
 };
 
 exports.update = (req, res) => {
     const id = req.params.id;
-    updateNote(id, req, res)
+    updateBooking(id, req, res)
 };
 
 exports.delete = (req, res) => {
     const id = req.params.id;
-    deleteNoteById(id, res)
+    deleteBookingById(id, res)
 };
 
 exports.deleteAll = (req, res) => {
-    deleteAllNotes(req, res)
+    deleteAllBookings(req, res)
 };

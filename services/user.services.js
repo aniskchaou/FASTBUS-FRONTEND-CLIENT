@@ -1,8 +1,8 @@
-const Note = require("../models/note.models");
+const User = require("../models/user.models");
 
-exports.findAllNotes = (res) => {
+exports.findAllUsers = (res) => {
 
-    Note.findAll({})
+    User.findAll({})
         .then(data => {
             res.send(data);
         })
@@ -14,82 +14,82 @@ exports.findAllNotes = (res) => {
         });
 }
 
-exports.createNote = (income, res) => {
-    Note.create(income)
+exports.createUser = (income, res) => {
+    User.create(income)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Note."
+                    err.message || "Some error occurred while creating the User."
             });
         });
 }
 
-exports.findNoteById = (id) => {
-    Note.findByPk(id)
+exports.findUserById = (id) => {
+    User.findByPk(id)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Note with id=" + id
+                message: "Error retrieving User with id=" + id
             });
         });
 }
 
-exports.deleteNoteById = (id, res) => {
-    Note.destroy({
+exports.deleteUserById = (id, res) => {
+    User.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Note was deleted successfully!"
+                    message: "User was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Note with id=${id}. Maybe Note was not found!`
+                    message: `Cannot delete User with id=${id}. Maybe User was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Note with id=" + id
+                message: "Could not delete User with id=" + id
             });
         });
 }
 
-exports.updateNote = (id, req, res) => {
-    Note.update(req.body, {
+exports.updateUser = (id, req, res) => {
+    User.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Note was updated successfully."
+                    message: "User was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Note with id=${id}. Maybe Note was not found or req.body is empty!`
+                    message: `Cannot update User with id=${id}. Maybe User was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Note with id=" + id
+                message: "Error updating User with id=" + id
             });
         });
 }
 
-exports.deleteAllNotes = () => {
-    Note.destroy({
+exports.deleteAllUsers = () => {
+    User.destroy({
         where: {},
         truncate: false
     })
         .then(nums => {
-            res.send({ message: `${nums} Note were deleted successfully!` });
+            res.send({ message: `${nums} User were deleted successfully!` });
         })
         .catch(err => {
             res.status(500).send({

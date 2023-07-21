@@ -1,8 +1,8 @@
-const Note = require("../models/note.models");
+const Offer = require("../models/offer.models");
 
-exports.findAllNotes = (res) => {
+exports.findAllOffers = (res) => {
 
-    Note.findAll({})
+    Offer.findAll({})
         .then(data => {
             res.send(data);
         })
@@ -14,82 +14,82 @@ exports.findAllNotes = (res) => {
         });
 }
 
-exports.createNote = (income, res) => {
-    Note.create(income)
+exports.createOffer = (income, res) => {
+    Offer.create(income)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Note."
+                    err.message || "Some error occurred while creating the Offer."
             });
         });
 }
 
-exports.findNoteById = (id) => {
-    Note.findByPk(id)
+exports.findOfferById = (id) => {
+    Offer.findByPk(id)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Note with id=" + id
+                message: "Error retrieving Offer with id=" + id
             });
         });
 }
 
-exports.deleteNoteById = (id, res) => {
-    Note.destroy({
+exports.deleteOfferById = (id, res) => {
+    Offer.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Note was deleted successfully!"
+                    message: "Offer was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Note with id=${id}. Maybe Note was not found!`
+                    message: `Cannot delete Offer with id=${id}. Maybe Offer was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Note with id=" + id
+                message: "Could not delete Offer with id=" + id
             });
         });
 }
 
-exports.updateNote = (id, req, res) => {
-    Note.update(req.body, {
+exports.updateOffer = (id, req, res) => {
+    Offer.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Note was updated successfully."
+                    message: "Offer was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Note with id=${id}. Maybe Note was not found or req.body is empty!`
+                    message: `Cannot update Offer with id=${id}. Maybe Offer was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Note with id=" + id
+                message: "Error updating Offer with id=" + id
             });
         });
 }
 
-exports.deleteAllNotes = () => {
-    Note.destroy({
+exports.deleteAllOffers = () => {
+    Offer.destroy({
         where: {},
         truncate: false
     })
         .then(nums => {
-            res.send({ message: `${nums} Note were deleted successfully!` });
+            res.send({ message: `${nums} Offer were deleted successfully!` });
         })
         .catch(err => {
             res.status(500).send({

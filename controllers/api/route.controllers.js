@@ -1,4 +1,4 @@
-const { findNoteById, updateNote, deleteNoteById, deleteAllNotes, findAllNotes, createNote } = require("../../services/note.services");
+const { findRouteById, updateRoute, deleteRouteById, deleteAllRoutes, findAllRoutes, createRoute } = require("../../services/route.services");
 
 
 
@@ -13,32 +13,40 @@ exports.create = (req, res) => {
     // Create a user
     const patient = {
         name: req.body.name,
-        description: req.body.description
+        from: req.body.from,
+        to: req.body.to,
+        breakPoints: req.body.breakPoints,
+        distance: req.body.distance,
+        approximateTime: req.body.approximateTime,
+        childSeat: req.body.childSeat,
+        start: req.body.start,
+        end: req.body.end,
+        SpacialSeat: req.body.SpacialSeat
     }
 
-    createNote(patient, res)
+    createRoute(patient, res)
 };
 
 exports.findAll = (req, res) => {
 
-    findAllNotes(res)
+    findAllRoutes(res)
 };
 
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    findNoteById(id, res)
+    findRouteById(id, res)
 };
 
 exports.update = (req, res) => {
     const id = req.params.id;
-    updateNote(id, req, res)
+    updateRoute(id, req, res)
 };
 
 exports.delete = (req, res) => {
     const id = req.params.id;
-    deleteNoteById(id, res)
+    deleteRouteById(id, res)
 };
 
 exports.deleteAll = (req, res) => {
-    deleteAllNotes(req, res)
+    deleteAllRoutes(req, res)
 };

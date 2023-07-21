@@ -13,10 +13,9 @@
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="/destination">Destination</a></li>
-						<li><a href="/pricing">Pricing</a></li>
+						<li><a href="/">Home</a></li>
+						<li><a href="/destination">Destinations</a></li>
 						<li><a href="/contact">Contact</a></li>
-						<li><a target="_blank" href="https://fast-bus.herokuapp.com/">Administration</a></li>
 					</ul>
 				</div>
 			</div>
@@ -33,8 +32,8 @@
 					<div class="row row-mt-15em">
 
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-							<span class="intro-text-small">Don't be shy</span>
-							<h1>Get In Touch</h1>
+							<span class="intro-text-small">{{contacPage.subTitleSection}}</span>
+							<h1> {{contacPage.titleSection}}</h1>
 						</div>
 
 					</div>
@@ -50,7 +49,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="col-md-6">
-						<h3>Get In Touch</h3>
+						<h3> {{contacPage.contactFormTitle}}</h3>
 						<form action="#">
 							<div class="row form-group">
 								<div class="col-md-12">
@@ -91,11 +90,11 @@
 					<div class="col-md-5 col-md-push-1">
 
 						<div class="gtco-contact-info">
-							<h3>Contact Information</h3>
+							<h3> {{contacPage.contactInformationTitle}}</h3>
 							<ul>
-								<li class="address">198 West 21th Street, <br> Suite 721 New York NY 10016</li>
-								<li class="phone"><a href="tel://1234567920">+ 1235 2355 98</a></li>
-								<li class="email"><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
+								<li class="address">{{systemSettings.address}}</li>
+								<li class="phone"><a href="tel://1234567920">{{systemSettings.telephone}}</a></li>
+								<li class="email"><a href="mailto:info@yoursite.com">{{systemSettings.email}}</a></li>
 								<li class="url"><a href="https://freehtml5.co">FreeHTML5.co</a></li>
 							</ul>
 						</div>
@@ -110,19 +109,17 @@
 	<footer id="gtco-footer" role="contentinfo">
 		<div class="gtco-container">
 			<div class="row row-p	b-md">
-
+	
 				<div class="col-md-4">
 					<div class="gtco-widget">
-						<h3>About Us</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eos molestias quod sint
-							ipsum possimus temporibus officia iste perspiciatis consectetur in fugiat repudiandae cum.
-							Totam cupiditate nostrum ut neque ab?</p>
+						<h3> {{footerPage.title1Footer}}</h3>
+						<p>{{systemSettings.description}}</p>
 					</div>
 				</div>
-
+	
 				<div class="col-md-2 col-md-push-1">
 					<div class="gtco-widget">
-						<h3>Destination</h3>
+						<h3> {{footerPage.title2Footer}}</h3>
 						<ul class="gtco-footer-links">
 							<li><a href="#">Europe</a></li>
 							<li><a href="#">Australia</a></li>
@@ -132,10 +129,10 @@
 						</ul>
 					</div>
 				</div>
-
+	
 				<div class="col-md-2 col-md-push-1">
 					<div class="gtco-widget">
-						<h3>Hotels</h3>
+						<h3> {{footerPage.title3Footer}}</h3>
 						<ul class="gtco-footer-links">
 							<li><a href="#">Luxe Hotel</a></li>
 							<li><a href="#">Italy 5 Star hotel</a></li>
@@ -145,27 +142,26 @@
 						</ul>
 					</div>
 				</div>
-
+	
 				<div class="col-md-3 col-md-push-1">
 					<div class="gtco-widget">
-						<h3>Get In Touch</h3>
+						<h3>{{footerPage.title4Footer}}</h3>
 						<ul class="gtco-quick-contact">
-							<li><a href="#"><i class="icon-phone"></i> +1 234 567 890</a></li>
-							<li><a href="#"><i class="icon-mail2"></i> info@freehtml5.co</a></li>
+							<li><a href="#"><i class="icon-phone"></i> {{systemSettings.telephone}}</a></li>
+							<li><a href="#"><i class="icon-mail2"></i> {{systemSettings.email}}</a></li>
 							<li><a href="#"><i class="icon-chat"></i> Live Chat</a></li>
 						</ul>
 					</div>
 				</div>
-
+	
 			</div>
-
+	
 			<div class="row copyright">
 				<div class="col-md-12">
 					<p class="pull-left">
 						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-						<small class="block">Designed by <a href="https://freehtml5.co/"
-								target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.com/"
-								target="_blank">Unsplash</a></small>
+						<small class="block">Designed by <a href="https://freehtml5.co/" target="_blank">FreeHTML5.co</a>
+							Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small>
 					</p>
 					<p class="pull-right">
 					<ul class="gtco-social-icons pull-right">
@@ -177,7 +173,7 @@
 					</p>
 				</div>
 			</div>
-
+	
 		</div>
 	</footer>
 	<!-- </div> -->

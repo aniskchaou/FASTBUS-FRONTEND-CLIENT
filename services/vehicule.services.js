@@ -1,8 +1,8 @@
-const Note = require("../models/note.models");
+const Vehicule = require("../models/vehicule.models");
 
-exports.findAllNotes = (res) => {
+exports.findAllVehicules = (res) => {
 
-    Note.findAll({})
+    Vehicule.findAll({})
         .then(data => {
             res.send(data);
         })
@@ -14,82 +14,82 @@ exports.findAllNotes = (res) => {
         });
 }
 
-exports.createNote = (income, res) => {
-    Note.create(income)
+exports.createVehicule = (income, res) => {
+    Vehicule.create(income)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Note."
+                    err.message || "Some error occurred while creating the Vehicule."
             });
         });
 }
 
-exports.findNoteById = (id) => {
-    Note.findByPk(id)
+exports.findVehiculeById = (id) => {
+    Vehicule.findByPk(id)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Note with id=" + id
+                message: "Error retrieving Vehicule with id=" + id
             });
         });
 }
 
-exports.deleteNoteById = (id, res) => {
-    Note.destroy({
+exports.deleteVehiculeById = (id, res) => {
+    Vehicule.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Note was deleted successfully!"
+                    message: "Vehicule was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Note with id=${id}. Maybe Note was not found!`
+                    message: `Cannot delete Vehicule with id=${id}. Maybe Vehicule was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Note with id=" + id
+                message: "Could not delete Vehicule with id=" + id
             });
         });
 }
 
-exports.updateNote = (id, req, res) => {
-    Note.update(req.body, {
+exports.updateVehicule = (id, req, res) => {
+    Vehicule.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Note was updated successfully."
+                    message: "Vehicule was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Note with id=${id}. Maybe Note was not found or req.body is empty!`
+                    message: `Cannot update Vehicule with id=${id}. Maybe Vehicule was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Note with id=" + id
+                message: "Error updating Vehicule with id=" + id
             });
         });
 }
 
-exports.deleteAllNotes = () => {
-    Note.destroy({
+exports.deleteAllVehicules = () => {
+    Vehicule.destroy({
         where: {},
         truncate: false
     })
         .then(nums => {
-            res.send({ message: `${nums} Note were deleted successfully!` });
+            res.send({ message: `${nums} Vehicule were deleted successfully!` });
         })
         .catch(err => {
             res.status(500).send({

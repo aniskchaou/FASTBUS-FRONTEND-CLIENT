@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 
 
 var app = express()
+var cors = require('cors')
 app.set('views', path.join(__dirname, '/views/'));
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layout/' }))
 app.set('view engine', 'hbs')
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 app.use(bodyParser.json())
+app.use(cors())
 app.use(express.static(path.join(__dirname, '/views/assets/')));
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
