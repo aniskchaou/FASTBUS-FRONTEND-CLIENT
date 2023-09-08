@@ -17,10 +17,10 @@ module.exports = {
 };*/
 
 module.exports = {
-    HOST: "ec2-44-199-9-102.compute-1.amazonaws.com",
-    USER: "hsyffwpcjjsgoq",
-    PASSWORD: "a73a6df91f938b6547a480a489c829a13c93ca50c2500af6d4e53a7b1b431cc1",
-    DB: "dsvmca6j1uo4l",
+    HOST: "ec2-52-19-55-12.eu-west-1.compute.amazonaws.com",
+    USER: "aaiouigqdmvxmd",
+    PASSWORD: "e9df61f11102547d973d738e59c0f9df741ed9100d0c08c08b89073d24eb9a38",
+    DB: "d2m86v4lv51lge",
     dialect: "postgres",
     port: 5432,
     native: false,
