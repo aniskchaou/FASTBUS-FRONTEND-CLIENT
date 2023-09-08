@@ -27,7 +27,7 @@ const Booking = require("../models/booking.models.js");
 const Assign = require("../models/assignement.models.js");
 
 sequelize.sync().then(function () {
-    /*User.create(seed.userSeed);
+    User.create(seed.userSeed);
     HomePage.create(seed.homePageSeed)
     ContactPage.create(seed.contactPageSeed)
     DestinationPage.create(seed.destinationPageSeed)
@@ -51,7 +51,7 @@ sequelize.sync().then(function () {
     Pasenger.create(seed.passengerSeeds)
     Station.create(seed.stationSeeds)
     Vehicule.create(seed.vehiculeSeeds)
-    Travel.create(seed.travelSeeds)*/
+    Travel.create(seed.travelSeeds)
 }).then(function (res) {
     console.log(res.get({ plain: true }));
 });
